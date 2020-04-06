@@ -51,7 +51,7 @@ class Directory:
 
             fields = ['email', 'phone',
                       'department', 'title', 'education']
-            field = field.lower().strip()
+            field = field.lower()
             if field in fields:
                 method = "tempEmployee.set_{}(update)".format(field)
                 exec(method)
@@ -64,6 +64,16 @@ class Directory:
 
     def get_directory(self):
         return self.directory
+
+    def print_length(self):
+        length = len(self.directory)
+        entry_string = ""
+        if length == 1:
+            entry_string = "entry"
+        else:
+            entry_string = "entries"
+
+        print(length, entry_string)
 
     def print_directory(self):
         if len(self.directory) > 0:

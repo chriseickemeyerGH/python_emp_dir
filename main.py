@@ -12,20 +12,21 @@ from Directory import Directory
 
 def print_directions():
     print("""\nCommands:
-"view directory"-> print entire directory
-"view/edit/add/delete enter_employee_name_here"-> print/edit/add/delete employee listing
+"view directory"-> view entire directory
+"entry count"-> view number of entries in directory
+"view/edit/add/delete enter_employee_name_here"-> view/edit/add/delete employee listing
 "quit"-> end session and write to file
-"help"-> print commands (this list)
+"help"-> view commands (this list)
 """)
 
 
 def enter_command():
     val = input("Enter command: ")
-    return val.lower()
+    return val
 
 
 def first_chars(index_num, val):
-    return val[:index_num]
+    return val[:index_num].lower()
 
 
 def remaining_chars(index_num, val):
@@ -33,7 +34,7 @@ def remaining_chars(index_num, val):
 
 
 def add_field(field):
-    val = input("Enter {}: ".format(field))
+    val = input("Enter employee {}: ".format(field))
     return val
 
 
@@ -47,9 +48,12 @@ def main():
 
     val = enter_command()
 
-    while val != "quit":
-        if val == "view directory":
+    while val.lower() != "quit":
+        if val.lower() == "view directory":
             collection.print_directory()
+
+        elif val.lower() == "entry count":
+            collection.print_length()
 
         elif first_chars(5, val) == "view ":
             collection.print_entry(remaining_chars(5, val))
@@ -57,7 +61,7 @@ def main():
         elif first_chars(5, val) == "edit ":
             name = remaining_chars(5, val)
             field = input(
-                "Which field would you like to change? Fields are 'email', 'phone', 'department', 'title', and 'education'?\n")
+                "Which field would you like to change? Fields are 'email', 'phone', 'department', 'title', and 'education'?: ")
             update = input("Enter new information: ")
             collection.edit_entry(name, field, update)
 
