@@ -60,10 +60,7 @@ def main():
 
         elif first_chars(5, val) == "edit ":
             name = remaining_chars(5, val)
-            field = input(
-                "Which field would you like to change? Fields are 'email', 'phone', 'department', 'title', and 'education'?: ")
-            update = input("Enter new information: ")
-            collection.edit_entry(name, field, update)
+            collection.edit_entry(name)
 
         elif first_chars(4, val) == "add ":
 
@@ -90,12 +87,11 @@ def main():
 
         val = enter_command()
 
-    print("Writing to file...")
-
     write__ref = FileHandler()
     write__ref.write_file(collection)
 
     print("Session ended")
 
 
-main()
+if __name__ == "__main__":
+    main()

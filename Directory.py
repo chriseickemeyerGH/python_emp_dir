@@ -1,10 +1,18 @@
-
 from Employee import Employee
+
+
+def entry_not_found():
+    print("Entry does not exist")
 
 
 class Directory:
 
-    def __init__(self, directory={}):
+    # https://docs.python-guide.org/writing/gotchas/#mutable-default-arguments
+
+    def __init__(self, directory=None):
+        if directory is None:
+            directory = {}
+
         self.directory = directory
 
     def add_element(self, employee, initial_query=False):  # Employee employee
@@ -16,64 +24,65 @@ class Directory:
         else:
             print("Employee entry already exists")
 
-    def query_file_data(self, file):  # Employee employee
+    def query_file_data(self, file):
         for line in file:
             values = line.split("/")
             self.add_element(Employee(
                 values[0], values[1], values[2], values[3], values[4], values[5]), True)
 
     def write_file_data(self, file):
-        written_lines = ""
-        for (k, v) in self.directory.items():
-            line = k + "/" + v
-            written_lines += line
-        file.write(written_lines)
-        return written_lines
+        for key in self.directory:
+            file.write(key + "/" + self.directory[key])
 
     def remove_element(self, name):
         if name in self.directory:
             del self.directory[name]
             print("Entry deleted")
         else:
-            self.entry_not_found()
+            entry_not_found()
 
     def print_entry(self, name):
         if name in self.directory:
             print(name + "/" + self.directory[name], end="")
         else:
-            self.entry_not_found()
+            entry_not_found()
 
-    def edit_entry(self, name, field, update):  # Employee new_employee
+    def edit_entry(self, name, update=None, field=None):
         if name in self.directory:
             entry = self.directory[name].split("/")
-            tempEmployee = Employee(
+            temp_employee = Employee(
                 name, entry[0], entry[1], entry[2], entry[3], entry[4])
 
-            fields = ['email', 'phone',
-                      'department', 'title', 'education']
+            if field is None:
+                field = input(
+                    "Which field would you like to change? " +
+                    "Fields are 'email', 'phone', 'department', 'title', and 'education'?: ")
+
             field = field.lower()
+            fields = ['email', 'phone', 'department', 'title', 'education']
+
             if field in fields:
-                method = "tempEmployee.set_{}(update)".format(field)
-                exec(method)
-                self.directory[name] = tempEmployee.get_attrs()
+                if update is None:
+                    update = input("Enter new {} information: ".format(field))
+
+                exec("temp_employee.set_{}('{}')".format(field, update))
+
+                self.directory[name] = temp_employee.get_attrs()
                 print("Entry updated")
             else:
                 print("Invalid field entered")
         else:
-            self.entry_not_found()
-
-    def get_directory(self):
-        return self.directory
+            entry_not_found()
 
     def print_length(self):
         length = len(self.directory)
-        entry_string = ""
+
         if length == 1:
             entry_string = "entry"
         else:
             entry_string = "entries"
 
-        print(length, entry_string)
+        print(length, entry_string, "in directory")
 
     def print_directory(self):
         if len(self.directory) > 0:
@@ -82,5 +91,8 @@ class Directory:
         else:
             print("Directory is empty")
 
-    def entry_not_found(self):
-        print("Entry does not exist")
+    def get_directory(self):
+        return self.directory
+
+    def get_entry(self, key):
+        return self.directory[key]
