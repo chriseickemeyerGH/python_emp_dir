@@ -3,7 +3,7 @@ testing exceptions - caught vs raised
 chatterbox functions? - if exists: return val else: print something --- balancing these
 structuring file class- how to handle file actions separately
 type checking - benefits with objects
-keep count instead of determing length of dict everytime
+
 '''
 from Employee import Employee
 from FileHandler import FileHandler
@@ -74,10 +74,10 @@ def main():
             new_employee = Employee(name, email,
                                     phone, department, title, education)
 
-            collection.add_element(new_employee)
+            collection.add_employee(new_employee)
 
         elif first_chars(7, val) == "delete ":
-            collection.remove_element(remaining_chars(7, val))
+            collection.remove_employee(remaining_chars(7, val))
 
         elif val == "help":
             print_directions()

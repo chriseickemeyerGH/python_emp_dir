@@ -15,7 +15,17 @@ class Directory:
 
         self.directory = directory
 
-    def add_element(self, employee, initial_query=False):  # Employee employee
+    def query_file_data(self, file):
+        for line in file:  # open(file_name, "r")
+            values = line.split("/")
+            self.add_employee(Employee(
+                values[0], values[1], values[2], values[3], values[4], values[5]), True)
+
+    def write_file_data(self, file):  # open(file_name, "w")
+        for key in self.directory:
+            file.write(key + "/" + self.directory[key])
+
+    def add_employee(self, employee, initial_query=False):  # Employee employee
         key = employee.get_name()
         if key not in self.directory:
             self.directory[key] = employee.get_attrs()
@@ -24,17 +34,7 @@ class Directory:
         else:
             print("Employee entry already exists")
 
-    def query_file_data(self, file):
-        for line in file:
-            values = line.split("/")
-            self.add_element(Employee(
-                values[0], values[1], values[2], values[3], values[4], values[5]), True)
-
-    def write_file_data(self, file):
-        for key in self.directory:
-            file.write(key + "/" + self.directory[key])
-
-    def remove_element(self, name):
+    def remove_employee(self, name):
         if name in self.directory:
             del self.directory[name]
             print("Entry deleted")
@@ -91,8 +91,8 @@ class Directory:
         else:
             print("Directory is empty")
 
-    def get_directory(self):
-        return self.directory
+    # def get_directory(self):
+    #     return self.directory
 
     def get_entry(self, key):
         return self.directory[key]

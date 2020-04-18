@@ -33,18 +33,3 @@ class Employee:
 
     def get_attrs(self):
         return "{}/{}/{}/{}/{}/\n".format(self.email, self.phone, self.department, self.title, self.education)
-
-    # def get_email(self):
-    #     return self.email
-
-    # def get_phone(self):
-    #     return self.phone
-
-    # def get_department(self):
-    #     return self.department
-
-    # def get_title(self):
-    #     return self.title
-
-    # def get_education(self):
-    #     return self.education
