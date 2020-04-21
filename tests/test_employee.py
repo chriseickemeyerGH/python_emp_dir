@@ -1,4 +1,4 @@
-from Employee import Employee
+from src.Employee import Employee
 
 
 class TestEmployee:

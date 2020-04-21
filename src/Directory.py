@@ -1,4 +1,4 @@
-from Employee import Employee
+from src.Employee import Employee
 
 
 def entry_not_found():
@@ -21,9 +21,14 @@ class Directory:
             self.add_employee(Employee(
                 values[0], values[1], values[2], values[3], values[4], values[5]), True)
 
-    def write_file_data(self, file):  # open(file_name, "w")
+    def write_file_data(self, file=None):  # open(file_name, "w")
+        total_data = ""
         for key in self.directory:
-            file.write(key + "/" + self.directory[key])
+            total_data += (key + "/" + self.directory[key])
+        if file:
+            file.write(total_data)
+        else:
+            return total_data
 
     def add_employee(self, employee, initial_query=False):  # Employee employee
         key = employee.get_name()
@@ -38,12 +43,6 @@ class Directory:
         if name in self.directory:
             del self.directory[name]
             print("Entry deleted")
-        else:
-            entry_not_found()
-
-    def print_entry(self, name):
-        if name in self.directory:
-            print(name + "/" + self.directory[name], end="")
         else:
             entry_not_found()
 
@@ -74,6 +73,12 @@ class Directory:
         else:
             entry_not_found()
 
+    def print_entry(self, name):
+        if name in self.directory:
+            print(name + "/" + self.directory[name], end="")
+        else:
+            entry_not_found()
+
     def print_length(self):
         length = len(self.directory)
 
@@ -90,9 +95,3 @@ class Directory:
                 print(key + "/" + self.directory[key], end="")
         else:
             print("Directory is empty")
-
-    # def get_directory(self):
-    #     return self.directory
-
-    def get_entry(self, key):
-        return self.directory[key]

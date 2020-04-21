@@ -16,9 +16,9 @@ class FileHandler:
 
     def write_file(self, directory=None, write_fail=None):  # Directory directory
         try:
+            if write_fail:
+                raise OSError
             with open(self.file_name, "w") as file:
-                if write_fail:
-                    raise OSError
                 if directory:
                     directory.write_file_data(file)
             print("Data write to '{}' successful".format(self.file_name))

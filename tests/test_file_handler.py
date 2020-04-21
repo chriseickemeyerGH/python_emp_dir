@@ -1,4 +1,4 @@
-from FileHandler import FileHandler
+from src.FileHandler import FileHandler
 
 
 class TestFileHandler:
@@ -39,7 +39,7 @@ class TestFileHandler:
 
     def test_write_file_fail(self, capfd):
         f = FileHandler()
-        f.write_file("fake_directory_param", True)  # trigger exception to be caught
+        f.write_file(write_fail=True)  # trigger exception to be caught
 
         out, err = capfd.readouterr()
         assert out == "Error writing to '{}'\n".format(getattr(f, "file_name"))
