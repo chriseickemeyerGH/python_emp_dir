@@ -36,5 +36,5 @@ class TestEmployee:
         d = Employee("Chris Jones", "chris@yahoo.com", "(555) 392 5828", "Sales", "Sales Associate",
                      "University of Cambridge")
 
-        assert e.get_attrs() == "joe@gmail.com/392 493 4939/Marketing/Marketing Manager/U of Minnesota/\n"
-        assert d.get_attrs() == "chris@yahoo.com/(555) 392 5828/Sales/Sales Associate/University of Cambridge/\n"
+        assert e.stringify_attrs() == "joe@gmail.com/392 493 4939/Marketing/Marketing Manager/U of Minnesota/\n"
+        assert d.stringify_attrs() == "chris@yahoo.com/(555) 392 5828/Sales/Sales Associate/University of Cambridge/\n"

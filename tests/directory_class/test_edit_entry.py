@@ -1,33 +1,6 @@
 from src.Directory import Directory
 
 
-# def edit_entry(self, name, update=None, field=None):
-#     if name in self.directory:
-#         entry = self.directory[name].split("/")
-#         temp_employee = Employee(
-#             name, entry[0], entry[1], entry[2], entry[3], entry[4])
-#
-#         if field is None:
-#             field = input(
-#                 "Which field would you like to change? " +
-#                 "Fields are 'email', 'phone', 'department', 'title', and 'education'?: ")
-#
-#         field = field.lower()
-#         fields = ['email', 'phone', 'department', 'title', 'education']
-#
-#         if field in fields:
-#             if update is None:
-#                 update = input("Enter new {} information: ".format(field))
-#
-#             exec("temp_employee.set_{}('{}')".format(field, update))
-#
-#             self.directory[name] = temp_employee.get_attrs()
-#             print("Entry updated")
-#         else:
-#             print("Invalid field entered")
-#     else:
-#         entry_not_found()
-
 class TestEditEntry:
     def test_name_fail(self, capfd):
         d = Directory({"Rachel Wood": "rachel@yahoo.com/283 482 4929/IT/IT Person/U of A/\n"})

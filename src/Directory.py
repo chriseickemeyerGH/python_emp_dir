@@ -1,7 +1,7 @@
 from src.Employee import Employee
 
 
-def entry_not_found():
+def entry_dne():
     print("Entry does not exist")
 
 
@@ -33,7 +33,7 @@ class Directory:
     def add_employee(self, employee, initial_query=False):  # Employee employee
         key = employee.get_name()
         if key not in self.directory:
-            self.directory[key] = employee.get_attrs()
+            self.directory[key] = employee.stringify_attrs()
             if not initial_query:
                 print("Add successful")
         else:
@@ -44,7 +44,7 @@ class Directory:
             del self.directory[name]
             print("Entry deleted")
         else:
-            entry_not_found()
+            entry_dne()
 
     def edit_entry(self, name, update=None, field=None):
         if name in self.directory:
@@ -55,7 +55,7 @@ class Directory:
             if field is None:
                 field = input(
                     "Which field would you like to change? " +
-                    "Fields are 'email', 'phone', 'department', 'title', and 'education'?: ")
+                    "Fields are 'email', 'phone', 'department', 'title', and 'education': ")
 
             field = field.lower()
             fields = ['email', 'phone', 'department', 'title', 'education']
@@ -66,18 +66,18 @@ class Directory:
 
                 exec("temp_employee.set_{}('{}')".format(field, update))
 
-                self.directory[name] = temp_employee.get_attrs()
+                self.directory[name] = temp_employee.stringify_attrs()
                 print("Entry updated")
             else:
                 print("Invalid field entered")
         else:
-            entry_not_found()
+            entry_dne()
 
     def print_entry(self, name):
         if name in self.directory:
             print(name + "/" + self.directory[name], end="")
         else:
-            entry_not_found()
+            entry_dne()
 
     def print_length(self):
         length = len(self.directory)

@@ -43,8 +43,9 @@ def add_field(field):
 
 def main():
     print("Starting session...")
+    file_name = input("Enter name of file to read and write to (press 'Enter' to use default — 'directory.txt': ")
 
-    queried_file = FileHandler()
+    queried_file = FileHandler(file_name)
     collection = Directory()
     queried_file.read_file(collection)
     print_directions()
@@ -90,8 +91,8 @@ def main():
 
         val = enter_command()
 
-    write__ref = FileHandler()
-    write__ref.write_file(collection)
+    write_ref = FileHandler(file_name)
+    write_ref.write_file(collection)
 
     print("Session ended")
 

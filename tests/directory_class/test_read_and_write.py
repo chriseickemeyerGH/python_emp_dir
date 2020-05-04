@@ -2,6 +2,7 @@ from src.Directory import Directory
 
 
 class TestReadWrite:
+
     def test_query_file(self, tmpdir):
         d = Directory()
 

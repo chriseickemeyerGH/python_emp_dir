@@ -1,6 +1,3 @@
-# only use getter for name, others for testing
-
-
 class Employee:
     def __init__(self, name, email, phone, department, title, education):
         self.name = name
@@ -10,11 +7,11 @@ class Employee:
         self.title = title
         self.education = education
 
-    def set_name(self, name):
-        self.name = name
-
     def get_name(self):
         return self.name
+
+    def set_name(self, name):
+        self.name = name
 
     def set_email(self, email):
         self.email = email
@@ -31,5 +28,5 @@ class Employee:
     def set_education(self, education):
         self.education = education
 
-    def get_attrs(self):
+    def stringify_attrs(self):
         return "{}/{}/{}/{}/{}/\n".format(self.email, self.phone, self.department, self.title, self.education)

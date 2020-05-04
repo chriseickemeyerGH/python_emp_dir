@@ -1,5 +1,5 @@
-from src.main import first_chars
-from src.main import remaining_chars
+from src.Main import first_chars
+from src.Main import remaining_chars
 
 
 class TestMainFuncs:
