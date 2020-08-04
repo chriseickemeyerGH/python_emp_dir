@@ -1,7 +1,8 @@
-from src.Directory import Directory
+from Directory import Directory
 
 
 class TestRemoveEmployee:
+    # video example
     def test_remove_success1(self, capfd):
         emp_remove = "Jason Jones"
         directory = {emp_remove: "jj@gmail.com/382 284 4891/IT/IT Person/U of K"}

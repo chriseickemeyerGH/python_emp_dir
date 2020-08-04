@@ -1,4 +1,4 @@
-from src.Directory import Directory
+from Directory import Directory
 
 
 class TestEditEntry:
@@ -42,6 +42,7 @@ class TestEditEntry:
         assert out == "Invalid field entered\n"
         assert name in getattr(d, "directory")
 
+    # video example
     def test_success_1(self, capfd):
         name = "Rachel Wood"
         d = Directory({name: "rachel@yahoo.com/283 482 4929/IT/IT Person/U of A/\n"})

@@ -1,4 +1,4 @@
-from src.FileHandler import FileHandler
+from FileHandler import FileHandler
 
 
 class TestFileHandler:
@@ -37,6 +37,7 @@ class TestFileHandler:
         out, err = capfd.readouterr()
         assert out == "Data write to '{}' successful\n".format(file)
 
+    # video example
     def test_write_file_fail(self, capfd):
         f = FileHandler("some_file.txt")
         f.write_file(write_fail=True)  # trigger exception to be caught

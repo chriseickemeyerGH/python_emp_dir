@@ -6,7 +6,6 @@ class FileHandler:
             self.file_name = file_name
 
     def read_file(self, directory=None):  # Directory directory
-
         try:
             with open(self.file_name, "r") as file:
                 if directory:
@@ -18,6 +17,7 @@ class FileHandler:
             print(
                 "File '{}' does not exist. Add and submit data to create it.".format(self.file_name))
 
+    # video example
     def write_file(self, directory=None, write_fail=None):  # Directory directory
         try:
             if write_fail:

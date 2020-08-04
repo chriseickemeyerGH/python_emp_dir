@@ -1,4 +1,4 @@
-from src.Directory import Directory
+from Directory import Directory
 
 
 class TestPrintSpecificMethods:

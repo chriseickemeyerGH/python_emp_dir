@@ -1,16 +1,7 @@
-'''
 
-chatterbox functions? - if exists: return val else: print something --- balancing these
-structuring file class- how to handle file actions separately
-type checking - benefits with objects
-formatting methods to be tested
-combining tests in some test functions -- calling test function more than once in test
-typing out whole directory vs using in and not in
-
-'''
-from src.Employee import Employee
-from src.FileHandler import FileHandler
-from src.Directory import Directory
+from Employee import Employee
+from FileHandler import FileHandler
+from Directory import Directory
 
 
 def print_directions():

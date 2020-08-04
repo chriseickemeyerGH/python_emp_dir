@@ -1,8 +1,9 @@
-from src.Directory import Directory
-from src.Employee import Employee
+from Directory import Directory
+from Employee import Employee
 
 
 class TestAddEmployee:
+    # video example
     def test_add_employee_single_add(self, capfd):
         d = Directory()
         emp1 = Employee("Chris Williams", "test@gmail.com", "923 392 3948", "IT", "IT Manager", "U of A")

@@ -1,4 +1,4 @@
-from src.Employee import Employee
+from Employee import Employee
 
 
 def entry_dne():
@@ -21,6 +21,7 @@ class Directory:
             self.add_employee(Employee(
                 values[0], values[1], values[2], values[3], values[4], values[5]), True)
 
+    # video example
     def write_file_data(self, file=None):  # open(file_name, "w")
         total_data = ""
         for key in self.directory:
@@ -39,6 +40,7 @@ class Directory:
         else:
             print("Employee entry already exists")
 
+    # video example
     def remove_employee(self, name):
         if name in self.directory:
             del self.directory[name]
@@ -46,6 +48,7 @@ class Directory:
         else:
             entry_dne()
 
+    # video example
     def edit_entry(self, name, update=None, field=None):
         if name in self.directory:
             entry = self.directory[name].split("/")
@@ -73,6 +76,7 @@ class Directory:
         else:
             entry_dne()
 
+    # video example
     def print_entry(self, name):
         if name in self.directory:
             print(name + "/" + self.directory[name], end="")

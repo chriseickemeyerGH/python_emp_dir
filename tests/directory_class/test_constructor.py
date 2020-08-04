@@ -1,4 +1,4 @@
-from src.Directory import Directory
+from Directory import Directory
 
 
 def test_constructor_attrs():

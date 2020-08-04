@@ -1,4 +1,4 @@
-from src.Directory import Directory
+from Directory import Directory
 
 
 class TestReadWrite:
@@ -30,6 +30,7 @@ class TestReadWrite:
             "George Zip": "zipper@yahoo.com/394 4959 2949/IT/IT Director/U of Z/\n"
         }
 
+    # video example
     def test_write_data(self, tmpdir):
         dir_vals = {"George Zip": "george@yahoo.com/438 283 5820/IT/IT Person/U of O/\n"}
         d = Directory(dir_vals)
